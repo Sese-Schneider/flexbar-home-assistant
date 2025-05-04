@@ -32,25 +32,24 @@
     "keyLibrary": {
         "title": "$PluginName",
         "style": {
-            "icon": "mdi mdi-puzzle"
+            "icon": "mdi mdi-home-automation"
         },
         "children": [
             {
-                "title": "$Counter.Title",
-                "tip": "$Counter.Tip",
-                "cid": "dev.sese.flexbar_home_assistant.counter",
+                "title": "$Toggle.Title",
+                "tip": "$Toggle.Tip",
+                "cid": "dev.sese.flexbar_home_assistant.toggle",
                 "config": {
                     "keyType": "default",
                     "clickable": true,
                     "platform": ["windows", "mac"]
                 },
                 "style": {
-                    "icon": "mdi mdi-gesture-tap-button",
-                    "width": 240
+                    "icon": "mdi toggle-switch",
+                    "width": 120
                 },
                 "data": {
-                    "rangeMin": "0",
-                    "rangeMax": "100"
+                    "entityId": ""
                 }
             }
         ]
@@ -58,12 +57,11 @@
     "local": {
         "en": {
             "PluginName": "Home Assistant",
-            "Counter": {
-                "Title": "Tap Counter",
-                "Tip": "Default keys with customizable drawable content",
+            "Toggle": {
+                "Title": "Toggle",
+                "Tip": "Toggle an entity",
                 "UI": {
-                    "RangeMin": "Minimum Value",
-                    "RangeMax": "Maximum Value"
+                    "entityId": "domain.id of the entity to toggle"
                 }
             }
         }

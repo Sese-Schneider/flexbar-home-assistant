@@ -5,6 +5,8 @@ const {
     resourcesPath,
 } = require("@eniac/flexdesigner");
 
+const { connect, toggle } = require("./api");
+
 // Store key data
 const keyData = {};
 
@@ -28,17 +30,11 @@ plugin.on("ui.message", async (payload) => {
     logger.info("Received message from UI:", payload);
     if (payload.data === "test-connection") {
         try {
-            // send an API request to the Home Assistant server
-            const response = await fetch(payload.config.url + "/api/", {
-                method: "GET",
-                headers: {
-                    Authorization: "Bearer " + payload.config.api_key,
-                    "Content-Type": "application/json",
-                },
-            });
+            const response = await connect(payload.config);
             return { success: response.ok };
         } catch (error) {
-            return { success: false, error: error.message };
+            logger.error("Error connecting to Home Assistant:", error);
+            return { success: false };
         }
     }
 });
@@ -74,13 +70,8 @@ plugin.on("device.status", (devices) => {
 plugin.on("plugin.alive", (payload) => {
     logger.info("Plugin alive:", payload);
     for (let key of payload.keys) {
-        keyData[key.uid] = key;
-        if (key.cid === "dev.sese.flexbar_home_assistant.counter") {
-            keyData[key.uid].counter = parseInt(key.data.rangeMin);
-            key.style.showIcon = false;
-            key.style.showTitle = true;
-            key.title = "Click Me!";
-            plugin.draw(payload.serialNumber, key, "draw");
+        if (key.cid === "dev.sese.flexbar_home_assistant.toggle") {
+            // plugin.draw(payload.serialNumber, key, "draw");
         }
     }
 });
@@ -96,16 +87,14 @@ plugin.on("plugin.alive", (payload) => {
 plugin.on("plugin.data", (payload) => {
     logger.info("Received plugin.data:", payload);
     const data = payload.data;
-    if (data.key.cid === "dev.sese.flexbar_home_assistant.counter") {
+    if (data.key.cid === "dev.sese.flexbar_home_assistant.toggle") {
         const key = data.key;
-        key.style.showIcon = false;
-        key.style.showTitle = true;
-        keyData[key.uid].counter++;
-        if (keyData[key.uid].counter > parseInt(key.data.rangeMax)) {
-            keyData[key.uid].counter = parseInt(key.data.rangeMin);
-        }
-        key.title = keyData[key.uid].counter.toString();
-        plugin.draw(payload.serialNumber, key, "draw");
+
+        const domain = key.data.entityId.split(".")[0];
+
+        toggle(domain, key.data.entityId, plugin);
+
+        // plugin.draw(payload.serialNumber, key, "draw");
     }
 });
 
