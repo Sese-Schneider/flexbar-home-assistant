@@ -5,7 +5,15 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "version-file": "dev.sese.flexbar_home_assistant.plugin/manifest.json"
+      "skip-github-release": true,
+      "skip-github-release-notes": true,
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "dev.sese.flexbar_home_assistant.plugin/manifest.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   }
 }
