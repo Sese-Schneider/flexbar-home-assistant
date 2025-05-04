@@ -1,5 +1,5 @@
 
-name: Pack files and release
+name: release
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: publish
     permissions: write-all
     runs-on: ubuntu-latest
 
