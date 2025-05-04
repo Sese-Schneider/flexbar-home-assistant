@@ -1,0 +1,6 @@
+node_modules
+logs
+.vscode
+.env
+package-lock.json
+dev.sese.flexbar_home_assistant.plugin/backend
