@@ -28,39 +28,36 @@
             "version": "1.0.0"
         }
     ],
-    "configPage": "",
+    "configPage": "global_config",
     "keyLibrary": {
         "title": "$PluginName",
         "style": {
             "icon": "mdi mdi-puzzle"
         },
         "children": [
-          {
-              "title": "$Counter.Title",
-              "tip": "$Counter.Tip",
-              "cid": "dev.sese.flexbar_home_assistant.counter",
-              "config": {
-                  "keyType": "default",
-                  "clickable": true,
-                  "platform": [
-                      "windows",
-                      "mac"
-                  ]
-              },
-              "style": {
-                  "icon": "mdi mdi-gesture-tap-button",
-                  "width": 240
-              },
-              "data": {
-                  "rangeMin": "0",
-                  "rangeMax": "100"
-              }
-          }
+            {
+                "title": "$Counter.Title",
+                "tip": "$Counter.Tip",
+                "cid": "dev.sese.flexbar_home_assistant.counter",
+                "config": {
+                    "keyType": "default",
+                    "clickable": true,
+                    "platform": ["windows", "mac"]
+                },
+                "style": {
+                    "icon": "mdi mdi-gesture-tap-button",
+                    "width": 240
+                },
+                "data": {
+                    "rangeMin": "0",
+                    "rangeMax": "100"
+                }
+            }
         ]
     },
     "local": {
         "en": {
-            "PluginName": "HomeAssistant",
+            "PluginName": "Home Assistant",
             "Counter": {
                 "Title": "Tap Counter",
                 "Tip": "Default keys with customizable drawable content",

@@ -4,3 +4,4 @@ logs
 .env
 package-lock.json
 dev.sese.flexbar_home_assistant.plugin/backend
+dev.sese.flexbar_home_assistant.plugin/config.json
