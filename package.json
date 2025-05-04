@@ -1,5 +1,5 @@
 {
-    "version": "0.0.1",
+    "version": "0.1.0",
     "scripts": {
         "build": "rollup -c",
         "dev": "npm-run-all plugin:unlink plugin:link -p plugin:watch plugin:debug",
