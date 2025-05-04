@@ -61,7 +61,7 @@
                 "Title": "Toggle",
                 "Tip": "Toggle an entity",
                 "UI": {
-                    "entityId": "domain.id of the entity to toggle"
+                    "entityId": "Entity ID"
                 }
             }
         }
