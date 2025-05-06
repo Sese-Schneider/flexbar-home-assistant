@@ -10,11 +10,14 @@
         "plugin:debug": "flexcli plugin debug --uuid=dev.sese.flexbar_home_assistant",
         "plugin:validate": "flexcli plugin validate --path dev.sese.flexbar_home_assistant.plugin",
         "plugin:pack": "flexcli plugin pack --path dev.sese.flexbar_home_assistant.plugin",
-        "plugin:install": "flexcli plugin install --path ./dev.sese.flexbar_home_assistant.flexplugin --force"
+        "plugin:install": "flexcli plugin install --path ./dev.sese.flexbar_home_assistant.flexplugin --force",
+        "format": "eslint --fix \"src/**/*.ts\""
     },
     "type": "commonjs",
     "dependencies": {
-        "@eniac/flexdesigner": "^1.0.1"
+        "@eniac/flexdesigner": "^1.0.1",
+        "home-assistant-js-websocket": "^9.5.0",
+        "ws": "^8.18.2"
     },
     "devDependencies": {
         "@eniac/flexcli": "^1.0.6",
@@ -24,8 +27,17 @@
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^12.1.2",
         "@types/node": "^22.15.3",
+        "@typescript-eslint/eslint-plugin": "^8.32.0",
+        "@typescript-eslint/parser": "^8.32.0",
+        "eslint": "^9.26.0",
+        "eslint-config-prettier": "^10.1.2",
+        "eslint-import-resolver-typescript": "^4.3.4",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-prettier": "^5.4.0",
+        "eslint-plugin-unused-imports": "^4.1.4",
         "glob": "^11.0.1",
         "npm-run-all": "^4.1.5",
+        "prettier": "^3.5.3",
         "rollup": "^4.0.2",
         "tslib": "^2.8.1",
         "typescript": "^5.8.3"
