@@ -42,10 +42,7 @@
                 "config": {
                     "keyType": "default",
                     "clickable": true,
-                    "platform": [
-                        "windows",
-                        "mac"
-                    ]
+                    "platform": ["windows", "mac"]
                 },
                 "style": {
                     "icon": "mdi toggle-switch",
@@ -64,7 +61,8 @@
                 "Title": "Toggle",
                 "Tip": "Toggle an entity",
                 "UI": {
-                    "entityId": "Entity ID"
+                    "entityId": "Entity ID",
+                    "syncStyle": "Sync style with Home Assistant"
                 }
             }
         }

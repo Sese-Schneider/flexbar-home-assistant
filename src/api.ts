@@ -1,9 +1,9 @@
-import { Config, Plugin } from './types';
+import { Config, Context } from './types';
 
 let configCache: Config | null = null;
-async function getConfig(plugin: Plugin): Promise<Config> {
+async function getConfig(context: Context): Promise<Config> {
     if (configCache) return configCache;
-    configCache = (await plugin.getConfig()) as Config;
+    configCache = (await context.plugin.getConfig()) as Config;
     return configCache;
 }
 
@@ -19,8 +19,8 @@ async function connect(config: Config) {
     return result;
 }
 
-async function toggle(domain: string, entityId: string, plugin: Plugin) {
-    const config = await getConfig(plugin);
+async function toggle(domain: string, entityId: string, context: Context) {
+    const config = await getConfig(context);
     const url = `${config.url}/api/services/${domain}/toggle`;
     const response = await fetch(url, {
         method: 'POST',
@@ -35,4 +35,17 @@ async function toggle(domain: string, entityId: string, plugin: Plugin) {
     return response;
 }
 
-export { connect, toggle };
+async function getEntityState(entityId: string, context: Context) {
+    const config = await getConfig(context);
+    const url = `${config.url}/api/states/${entityId}`;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${config.api_key}`,
+            'Content-Type': 'application/json',
+        },
+    });
+    return response.json();
+}
+
+export { connect, getEntityState, toggle };

@@ -1,6 +1,7 @@
-import { plugin, logger } from '@eniac/flexdesigner';
+import { logger, plugin } from '@eniac/flexdesigner';
 
 import { connect, toggle } from './api';
+import { getKeyStyle } from './style';
 
 /**
  * Called when current active window changes
@@ -48,7 +49,7 @@ plugin.on('ui.message', async (payload) => {
  * ]
  */
 plugin.on('device.status', (devices) => {
-    logger?.info('Device status changed:', devices);
+    // logger?.info('Device status changed:', devices);
 });
 
 /**
@@ -59,11 +60,23 @@ plugin.on('device.status', (devices) => {
  *  keys: []
  * }
  */
-plugin.on('plugin.alive', (payload) => {
+plugin.on('plugin.alive', async (payload) => {
     logger?.info('Plugin alive:', payload);
+
+    const context = {
+        logger,
+        plugin,
+    };
+
     for (let key of payload.keys) {
         if (key.cid === 'dev.sese.flexbar_home_assistant.toggle') {
-            // plugin.draw(payload.serialNumber, key, "draw");
+            if (key.data.syncStyle && key.data.entityId) {
+                key.style = {
+                    ...key.style,
+                    ...(await getKeyStyle(key, context)),
+                };
+                plugin.draw(payload.serialNumber, key, 'draw');
+            }
         }
     }
 });
@@ -76,17 +89,25 @@ plugin.on('plugin.alive', (payload) => {
  *  data
  * }
  */
-plugin.on('plugin.data', (payload) => {
+plugin.on('plugin.data', async (payload) => {
     logger?.info('Received plugin.data:', payload);
+
+    const context = {
+        logger,
+        plugin,
+    };
     const data = payload.data;
+
     if (data.key.cid === 'dev.sese.flexbar_home_assistant.toggle') {
         const key = data.key;
 
         const domain = key.data.entityId.split('.')[0];
+        await toggle(domain, key.data.entityId, context);
 
-        toggle(domain, key.data.entityId, plugin);
-
-        // plugin.draw(payload.serialNumber, key, "draw");
+        if (key.data.syncStyle && key.data.entityId) {
+            key.style = await getKeyStyle(key, context);
+            plugin.draw(payload.serialNumber, key, 'draw');
+        }
     }
 });
 

@@ -11,6 +11,16 @@
                 ></v-text-field>
             </v-col>
         </v-row>
+        <v-row>
+            <v-col cols="6">
+                <v-switch
+                    v-model="modelValue.data.syncStyle"
+                    :label="$t('Toggle.UI.syncStyle')"
+                    hide-details
+                    class="mx-2"
+                ></v-switch>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
@@ -24,10 +34,17 @@ export default {
     },
     emits: ["update:modelValue"],
     data() {
-        return {};
+        return {
+            syncStyle: false,
+        };
     },
     methods: {},
-    mounted() {},
+    mounted() {
+        // Initialize syncStyle if not present
+        if (this.modelValue.data.syncStyle === undefined) {
+            this.modelValue.data.syncStyle = false;
+        }
+    },
 };
 </script>
 

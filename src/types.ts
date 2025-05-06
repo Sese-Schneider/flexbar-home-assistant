@@ -1,4 +1,4 @@
-import { plugin } from '@eniac/flexdesigner';
+import { logger, plugin } from '@eniac/flexdesigner';
 
 export type Config = {
     url: string;
@@ -6,3 +6,9 @@ export type Config = {
 };
 
 export type Plugin = typeof plugin;
+export type Logger = typeof logger;
+
+export type Context = {
+    logger: Logger;
+    plugin: Plugin;
+};
