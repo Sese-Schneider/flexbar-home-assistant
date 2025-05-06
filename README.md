@@ -28,6 +28,10 @@ Toggles an entity like a light or a switch.
 #### Configuration
 
 - Entity ID: The entity ID of the entity to toggle like `light.kitchen` or `switch.garden_lights`.
+- Sync style with Home Assistant: If enabled, the style of the key will be synced with the state of the entity in Home Assistant. The following styles are supported:
+  - icon
+  - color (lights)
+
 
 [license-shield]: https://img.shields.io/github/license/Sese-Schneider/flexbar-home-assistant.svg?style=for-the-badge
 [releases-shield]: https://img.shields.io/github/release/Sese-Schneider/flexbar-home-assistant.svg?style=for-the-badge
