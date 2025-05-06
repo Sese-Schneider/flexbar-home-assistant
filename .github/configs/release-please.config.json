@@ -5,8 +5,6 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "skip-github-release": true,
-      "skip-github-release-notes": true,
       "extra-files": [
         {
           "type": "json",
