@@ -1,7 +1,7 @@
 {
     "name": "Home Assistant",
     "uuid": "dev.sese.flexbar_home_assistant",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "author": "Sese-Schneider",
     "entry": "backend/plugin.cjs",
     "description": "Integrate HomeAssistant into your Flexbar",
@@ -42,7 +42,10 @@
                 "config": {
                     "keyType": "default",
                     "clickable": true,
-                    "platform": ["windows", "mac"]
+                    "platform": [
+                        "windows",
+                        "mac"
+                    ]
                 },
                 "style": {
                     "icon": "mdi toggle-switch",
