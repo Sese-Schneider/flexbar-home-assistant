@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/Sese-Schneider/flexbar-home-assistant/compare/v0.1.0...v0.2.0) (2025-05-06)
+
+
+### Features
+
+* Sync styles of buttons with HomeAssistant ([18897ea](https://github.com/Sese-Schneider/flexbar-home-assistant/commit/18897ea2e50aa43d6f2b637acb9844e994086314))
+* Synchronize live entity state via WebSocket ([efbe132](https://github.com/Sese-Schneider/flexbar-home-assistant/commit/efbe13202bad5f4fac4c154ab0487b5193200064))
+
 ## [0.1.0](https://github.com/Sese-Schneider/flexbar-home-assistant/compare/v0.0.1...v0.1.0) (2025-05-04)
 
 
