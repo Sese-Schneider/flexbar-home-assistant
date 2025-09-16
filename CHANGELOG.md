@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/Sese-Schneider/flexbar-home-assistant/compare/v0.2.0...v0.3.0) (2025-09-16)
+
+
+### Features
+
+* linux support ([#4](https://github.com/Sese-Schneider/flexbar-home-assistant/issues/4)) ([9c2bfef](https://github.com/Sese-Schneider/flexbar-home-assistant/commit/9c2bfef47687798a4414d6a192b2db4eef453c77))
+
 ## [0.2.0](https://github.com/Sese-Schneider/flexbar-home-assistant/compare/v0.1.0...v0.2.0) (2025-05-06)
 
 
